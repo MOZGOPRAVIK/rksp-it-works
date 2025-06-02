@@ -167,19 +167,69 @@
             }
 
             if (isValid) {
-                // Здесь будет отправка данных на сервер
+                // Отправка данных на сервер
                 const userData = {
                     email: email,
                     password: password
                 };
-                
-                // Пример отправки данных на сервер (будет реализовано позже)
-                console.log('Данные для отправки:', userData);
-                alert('Форма валидна! После настройки бэкенда здесь будет отправка данных на сервер.');
+
+                fetch('http://localhost:5000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        // Сохраняем токен и данные пользователя
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                        alert('Вход выполнен успешно!');
+                        // Перенаправляем на главную страницу
+                        window.location.href = 'index.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Произошла ошибка при входе');
+                });
             }
 
             return false;
         }
+
+        // Функция для проверки авторизации
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // Проверяем валидность токена
+                fetch('http://localhost:5000/api/profile', {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Если токен валидный, перенаправляем на главную
+                        window.location.href = 'index.html';
+                    } else {
+                        // Если токен невалидный, удаляем его
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                    }
+                })
+                .catch(error => {
+                    console.error('Auth check error:', error);
+                });
+            }
+        }
+
+        // Проверяем авторизацию при загрузке страницы
+        checkAuth();
     </script>
 </body>
 </html>

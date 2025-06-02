@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from config import Config
 from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+from datetime import datetime, timedelta
 
 # Инициализация приложения
 app = Flask(__name__)
@@ -92,6 +94,71 @@ def register():
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': 'Registration failed', 'details': str(e)}), 500
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+
+    if not all(key in data for key in ['email', 'password']):
+        return jsonify({'error': 'Missing email or password'}), 400
+
+    # Поиск пользователя по email
+    user = User.query.filter_by(email=data['email']).first()
+
+    # Проверка пароля
+    if user and check_password_hash(user.password_hash, data['password']):
+        # Создание JWT токена
+        token = jwt.encode({
+            'user_id': user.id,
+            'email': user.email,
+            'role': user.role,
+            'exp': datetime.utcnow() + timedelta(hours=24)  # Токен действителен 24 часа
+        }, app.config['SECRET_KEY'], algorithm='HS256')
+
+        return jsonify({
+            'message': 'Login successful',
+            'token': token,
+            'user': {
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+                'role': user.role
+            }
+        }), 200
+    
+    return jsonify({'error': 'Invalid email or password'}), 401
+
+# Декоратор для защиты маршрутов (требуется аутентификация)
+def token_required(f):
+    from functools import wraps
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if not token:
+            return jsonify({'error': 'Token is missing'}), 401
+        
+        try:
+            # Удаляем префикс "Bearer " если он есть
+            if token.startswith('Bearer '):
+                token = token[7:]
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
+            current_user = User.query.get(data['user_id'])
+        except:
+            return jsonify({'error': 'Token is invalid'}), 401
+
+        return f(current_user, *args, **kwargs)
+    return decorated
+
+# Пример защищенного маршрута
+@app.route('/api/profile', methods=['GET'])
+@token_required
+def get_profile(current_user):
+    return jsonify({
+        'id': current_user.id,
+        'username': current_user.username,
+        'email': current_user.email,
+        'role': current_user.role
+    })
 
 if __name__ == '__main__':
     app.run(debug=True) 
