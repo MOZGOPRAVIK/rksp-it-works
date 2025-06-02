@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гидроциклы - Offroad-Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем те же стили, что и на главной странице -->
+</head>
+<body>
+    <!-- Шапка (Header) -->
+    <header>
+        <div class="logo">Offroad-Shop</div>
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Главная</button>
+            <button class="nav-btn" onclick="window.location.href='atvs.html'">Квадроциклы</button>
+            <button class="nav-btn" onclick="window.location.href='buggies.html'">Багги</button>
+            <button class="nav-btn" onclick="window.location.href='snowmobiles.html'">Снегоходы</button>
+        </nav>
+        <div class="user-panel">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">3</span></button>
+            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+        </div>
+    </header>
+
+    <!-- Список гидроциклов -->
+    <section class="jetski-list">
+        <h2>Гидроциклы</h2>
+        <div class="items-grid">
+            <!-- Гидроцикл 1 -->
+            <div class="item-card">
+                <img src="https://www.brp-world.com/content/dam/global/en/sea-doo/recreation/sea-doo-gti-90-130/Sea-Doo-GTI-90-130-Gallery-3-4-front-Teal.jpg" alt="Гидроцикл Sea-Doo">
+                <h3>Гидроцикл Sea-Doo GTI 130</h3>
+                <p class="description">Универсальный гидроцикл для семейного отдыха. Объем двигателя: 1630 куб.см, мощность: 130 л.с.</p>
+                <p class="price">600 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Гидроцикл 2 -->
+            <div class="item-card">
+                <img src="https://www.yamaha-motor.eu/content/dam/yamaha-motor-eu/product-assets/2023/waverunner/2023-WaveRunner-FX-Cruiser-HO-EU-Blue-Static-001.jpg" alt="Гидроцикл Yamaha">
+                <h3>Гидроцикл Yamaha WaveRunner FX</h3>
+                <p class="description">Комфортный гидроцикл для длительных поездок. Объем двигателя: 1812 куб.см, мощность: 180 л.с.</p>
+                <p class="price">900 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Гидроцикл 3 -->
+            <div class="item-card">
+                <img src="https://www.kawasaki.com/en-us/-/media/kawasaki/product-images/2025/jetski/jet-ski-ultra-310lx/2025-jet-ski-ultra-310lx-ebony-metallic-shadow-gold-3q-static.ashx?h=450&w=600" alt="Гидроцикл Kawasaki">
+                <h3>Гидроцикл Kawasaki Jet Ski Ultra</h3>
+                <p class="description">Мощный гидроцикл для экстремальных водных трасс. Объем двигателя: 1498 куб.см, мощность: 310 л.с.</p>
+                <p class="price">1 400 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer>
+        <div class="footer-section">
+            <p>Телефон: +7 (999) 123-45-67<br>Email: info@offroadshop.ru</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">О нас</a> | <a href="#">Доставка</a> | <a href="#">Возврат</a>
+        </div>
+        <div class="footer-section">
+            <button class="social-btn">VK</button>
+            <button class="social-btn">IG</button>
+            <button class="social-btn">FB</button>
+        </div>
+    </footer>
+</body>
+</html>

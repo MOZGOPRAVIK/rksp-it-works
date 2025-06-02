@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Багги - Offroad-Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем те же стили, что и на главной странице -->
+</head>
+<body>
+    <!-- Шапка (Header) -->
+    <header>
+        <div class="logo">Offroad-Shop</div>
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Главная</button>
+            <button class="nav-btn" onclick="window.location.href='atvs.html'">Квадроциклы</button>
+            <button class="nav-btn" onclick="window.location.href='snowmobiles.html'">Снегоходы</button>
+            <button class="nav-btn" onclick="window.location.href='jetskis.html'">Гидроциклы</button>
+        </nav>
+        <div class="user-panel">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">3</span></button>
+            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+        </div>
+    </header>
+
+    <!-- Список багги -->
+    <section class="buggy-list">
+        <h2>Багги</h2>
+        <div class="items-grid">
+            <!-- Багги 1 -->
+            <div class="item-card">
+                <img src="https://www.major-motor.ru/images/models/model_big/22f1b4e8cbae17719c5363e252377f60-520x391_1.png" alt="Багги Can-Am">
+                <h3>Багги Can-Am Maverick X3</h3>
+                <p class="description">Мощный багги для экстремальных гонок. Объем двигателя: 900 куб.см, мощность: 195 л.с.</p>
+                <p class="price">1 200 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Багги 2 -->
+            <div class="item-card">
+                <img src="https://www.polaris.com/-/media/project/polaris/common/2025/utv/rzr/models/xp-1000-sport-polaris-blue/rzr-xp-1000-sport-polaris-blue-2-up-3q.png?h=450&iar=0&w=600&rev=ae4c2e6e8c9e4a5ea3b1e5d1b6f6c6e3" alt="Багги Polaris">
+                <h3>Багги Polaris RZR XP 1000</h3>
+                <p class="description">Универсальный багги для бездорожья. Объем двигателя: 999 куб.см, мощность: 110 л.с.</p>
+                <p class="price">1 500 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Багги 3 -->
+            <div class="item-card">
+                <img src="https://cdn.dealeraccelerate.com/passage/1/135/150087/10454775_hd.jpg" alt="Багги Yamaha">
+                <h3>Багги Yamaha YXZ1000R</h3>
+                <p class="description">Спортивный багги для высокоскоростных трасс. Объем двигателя: 998 куб.см, мощность: 112 л.с.</p>
+                <p class="price">1 300 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer>
+        <div class="footer-section">
+            <p>Телефон: +7 (999) 123-45-67<br>Email: info@offroadshop.ru</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">О нас</a> | <a href="#">Доставка</a> | <a href="#">Возврат</a>
+        </div>
+        <div class="footer-section">
+            <button class="social-btn">VK</button>
+            <button class="social-btn">IG</button>
+            <button class="social-btn">FB</button>
+        </div>
+    </footer>
+</body>
+</html>

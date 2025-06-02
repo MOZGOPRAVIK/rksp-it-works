@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квадроциклы - Offroad-Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем те же стили, что и на главной странице -->
+</head>
+<body>
+    <!-- Шапка (Header) -->
+    <header>
+        <div class="logo">Offroad-Shop</div>
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Главная</button>
+            <button class="nav-btn" onclick="window.location.href='buggies.html'">Багги</button>
+            <button class="nav-btn" onclick="window.location.href='snowmobiles.html'">Снегоходы</button>
+            <button class="nav-btn" onclick="window.location.href='jetskis.html'">Гидроциклы</button>
+        </nav>
+        <div class="user-panel">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">3</span></button>
+            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+        </div>
+    </header>
+
+    <!-- Список квадроциклов -->
+    <section class="atv-list">
+        <h2>Квадроциклы</h2>
+        <div class="items-grid">
+            <!-- Квадроцикл 1 -->
+            <div class="item-card">
+                <img src="https://universalmotors.ru/atvs/yamaha/atv-yamaha-yfz450r-se/1053384172702-sx1920x1080i417342.webp" alt="Квадроцикл Yamaha">
+                <h3>Квадроцикл Yamaha YFZ450</h3>
+                <p class="description">Мощный квадроцикл для экстремальных трасс. Объем двигателя: 450 куб.см, мощность: 40 л.с.</p>
+                <p class="price">450 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Квадроцикл 2 -->
+            <div class="item-card">
+                <img src="https://i.pinimg.com/originals/eb/97/1e/eb971ecf807eeb1c6e99cdbc2a04f7f1.jpg" alt="Квадроцикл Polaris">
+                <h3>Квадроцикл Polaris Sportsman 570</h3>
+                <p class="description">Надежный квадроцикл для охоты и туризма. Объем двигателя: 570 куб.см, мощность: 44 л.с.</p>
+                <p class="price">650 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Квадроцикл 3 -->
+            <div class="item-card">
+                <img src="https://cdn1.ozone.ru/s3/multimedia-1-s/7084703656.jpg" alt="Квадроцикл CFMOTO">
+                <h3>Квадроцикл CFMOTO X8</h3>
+                <p class="description">Универсальный квадроцикл для бездорожья. Объем двигателя: 800 куб.см, мощность: 63 л.с.</p>
+                <p class="price">800 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer>
+        <div class="footer-section">
+            <p>Телефон: +7 (999) 123-45-67<br>Email: info@offroadshop.ru</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">О нас</a> | <a href="#">Доставка</a> | <a href="#">Возврат</a>
+        </div>
+        <div class="footer-section">
+            <button class="social-btn">VK</button>
+            <button class="social-btn">IG</button>
+            <button class="social-btn">FB</button>
+        </div>
+    </footer>
+</body>
+</html>
