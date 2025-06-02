@@ -160,5 +160,10 @@ def get_profile(current_user):
         'role': current_user.role
     })
 
+@app.route('/api/logout', methods=['POST'])
+@token_required
+def logout(current_user):
+    return jsonify({'message': 'Logged out successfully'}), 200
+
 if __name__ == '__main__':
     app.run(debug=True) 
