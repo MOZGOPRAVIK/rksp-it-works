@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Offroad-Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка (Header) -->
+    <header>
+        <div class="logo">Offroad-Shop</div>
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Главная</button>
+            <button class="nav-btn" onclick="window.location.href='atvs.html'">Квадроциклы</button>
+            <button class="nav-btn" onclick="window.location.href='buggies.html'">Багги</button>
+            <button class="nav-btn" onclick="window.location.href='snowmobiles.html'">Снегоходы</button>
+            <button class="nav-btn" onclick="window.location.href='jetskis.html'">Гидроциклы</button>
+        </nav>
+        <div class="user-panel">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn">🛒<span class="cart-count">3</span></button>
+            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+        </div>
+    </header>
+
+    <!-- Список товаров в корзине -->
+    <section class="cart-list">
+        <h2>Корзина</h2>
+        <div class="items-grid">
+            <!-- Товар 1 -->
+            <div class="item-card">
+                <img src="https://universalmotors.ru/atvs/yamaha/atv-yamaha-yfz450r-se/1053384172702-sx1920x1080i417342.webp" alt="Квадроцикл Yamaha">
+                <h3>Квадроцикл Yamaha YFZ450</h3>
+                <p class="description">Мощный квадроцикл для экстремальных трасс. Объем двигателя: 450 куб.см, мощность: 40 л.с.</p>
+                <p class="price">450 000 руб.</p>
+                <button class="remove-from-cart">Удалить из корзины</button>
+            </div>
+            <!-- Товар 2 -->
+            <div class="item-card">
+                <img src="https://www.major-motor.ru/images/models/model_big/22f1b4e8cbae17719c5363e252377f60-520x391_1.png" alt="Багги Can-Am">
+                <h3>Багги Can-Am Maverick X3</h3>
+                <p class="description">Мощный багги для экстремальных гонок. Объем двигателя: 900 куб.см, мощность: 195 л.с.</p>
+                <p class="price">1 200 000 руб.</p>
+                <button class="remove-from-cart">Удалить из корзины</button>
+            </div>
+            <!-- Товар 3 -->
+            <div class="item-card">
+                <img src="https://motorecord.ru/images/motorecord.ru/thumbs/WithoutTrims_jpg_1600_auto_3/389cd48fb9a0d508f0f811bd0355e57f8fe8b033/843c380e402d941e7c4c9f5fa5a2a4e6.jpg" alt="Снегоход Arctic Cat">
+                <h3>Снегоход Arctic Cat ZR 9000</h3>
+                <p class="description">Мощный снегоход для экстремальных условий. Объем двигателя: 998 куб.см, мощность: 200 л.с.</p>
+                <p class="price">600 000 руб.</p>
+                <button class="remove-from-cart">Удалить из корзины</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer>
+        <div class="footer-section">
+            <p>Телефон: +7 (999) 123-45-67<br>Email: info@offroadshop.ru</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">О нас</a> | <a href="#">Доставка</a> | <a href="#">Возврат</a>
+        </div>
+        <div class="footer-section">
+            <button class="social-btn">VK</button>
+            <button class="social-btn">IG</button>
+            <button class="social-btn">FB</button>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Снегоходы - Offroad-Shop</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем те же стили, что и на главной странице -->
+</head>
+<body>
+    <!-- Шапка (Header) -->
+    <header>
+        <div class="logo">Offroad-Shop</div>
+        <nav>
+            <button class="nav-btn" onclick="window.location.href='index.html'">Главная</button>
+            <button class="nav-btn" onclick="window.location.href='atvs.html'">Квадроциклы</button>
+            <button class="nav-btn" onclick="window.location.href='buggies.html'">Багги</button>
+            <button class="nav-btn" onclick="window.location.href='jetskis.html'">Гидроциклы</button>
+        </nav>
+        <div class="user-panel">
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">3</span></button>
+            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+        </div>
+    </header>
+
+    <!-- Список багги -->
+    <section class="snowmobile-list">
+        <h2>Снегоходы</h2>
+        <div class="items-grid">
+            <!-- Снегоход 1 -->
+            <div class="item-card">
+                <img src="https://motorecord.ru/images/motorecord.ru/thumbs/WithoutTrims_jpg_1600_auto_3/389cd48fb9a0d508f0f811bd0355e57f8fe8b033/843c380e402d941e7c4c9f5fa5a2a4e6.jpg" alt="Снегоход Arctic Cat">
+                <h3>Снегоход Arctic Cat ZR 9000</h3>
+                <p class="description">Мощный снегоход для экстремальных условий. Объем двигателя: 998 куб.см, мощность: 200 л.с.</p>
+                <p class="price">600 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Снегоход 2 -->
+            <div class="item-card">
+                <img src="https://www.polaris.com/-/media/project/polaris/common/2025/snowmobile/industrial/models/850-pro-rmk-155/850-pro-rmk-155-stealth-grey-3q-static.png?h=450&iar=0&w=600" alt="Снегоход Polaris">
+                <h3>Снегоход Polaris 850 PRO-RMK</h3>
+                <p class="description">Легкий снегоход для глубокого снега. Объем двигателя: 850 куб.см, мощность: 155 л.с.</p>
+                <p class="price">700 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Снегоход 3 -->
+            <div class="item-card">
+                <img src="https://www.yamaha-motor.eu/content/dam/yamaha-motor-eu/product-assets/2023/snowmobile/2023-Sidewinder-SRX-LE-EU-Blue-Static-001.jpg" alt="Снегоход Yamaha">
+                <h3>Снегоход Yamaha Sidewinder SRX</h3>
+                <p class="description">Скоростной снегоход для трасс. Объем двигателя: 998 куб.см, мощность: 180 л.с.</p>
+                <p class="price">800 000 руб.</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (Footer) -->
+    <footer>
+        <div class="footer-section">
+            <p>Телефон: +7 (999) 123-45-67<br>Email: info@offroadshop.ru</p>
+        </div>
+        <div class="footer-section">
+            <a href="#">О нас</a> | <a href="#">Доставка</a> | <a href="#">Возврат</a>
+        </div>
+        <div class="footer-section">
+            <button class="social-btn">VK</button>
+            <button class="social-btn">IG</button>
+            <button class="social-btn">FB</button>
+        </div>
+    </footer>
+</body>
+</html>
