@@ -5,8 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Корзина - Offroad-Shop</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .auth-buttons, .user-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .username {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .cart-items {
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 20px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-controls button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quantity-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        .remove-item:hover {
+            color: #c82333;
+        }
+
+        .cart-total {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkout-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .checkout-btn:hover {
+            background: #218838;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .notification {
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Кнопки для неавторизованных пользователей -->
+    <div class="auth-buttons">
+        <a href="login.html">Войти</a> | 
+        <a href="register.html">Регистрация</a>
+    </div>
+
+    <!-- Информация о пользователе и кнопка выхода -->
+    <div class="user-info" style="display: none;">
+        <span class="username"></span>
+        <button class="logout-btn" onclick="logout()">Выйти</button>
+    </div>
+
     <!-- Шапка (Header) -->
     <header>
         <div class="logo">Offroad-Shop</div>
@@ -19,41 +187,17 @@
         </nav>
         <div class="user-panel">
             <button class="icon-btn">🔍</button>
-            <button class="icon-btn">🛒<span class="cart-count">3</span></button>
-            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
+            <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">0</span></button>
         </div>
     </header>
 
-    <!-- Список товаров в корзине -->
-    <section class="cart-list">
-        <h2>Корзина</h2>
-        <div class="items-grid">
-            <!-- Товар 1 -->
-            <div class="item-card">
-                <img src="https://universalmotors.ru/atvs/yamaha/atv-yamaha-yfz450r-se/1053384172702-sx1920x1080i417342.webp" alt="Квадроцикл Yamaha">
-                <h3>Квадроцикл Yamaha YFZ450</h3>
-                <p class="description">Мощный квадроцикл для экстремальных трасс. Объем двигателя: 450 куб.см, мощность: 40 л.с.</p>
-                <p class="price">450 000 руб.</p>
-                <button class="remove-from-cart">Удалить из корзины</button>
-            </div>
-            <!-- Товар 2 -->
-            <div class="item-card">
-                <img src="https://www.major-motor.ru/images/models/model_big/22f1b4e8cbae17719c5363e252377f60-520x391_1.png" alt="Багги Can-Am">
-                <h3>Багги Can-Am Maverick X3</h3>
-                <p class="description">Мощный багги для экстремальных гонок. Объем двигателя: 900 куб.см, мощность: 195 л.с.</p>
-                <p class="price">1 200 000 руб.</p>
-                <button class="remove-from-cart">Удалить из корзины</button>
-            </div>
-            <!-- Товар 3 -->
-            <div class="item-card">
-                <img src="https://motorecord.ru/images/motorecord.ru/thumbs/WithoutTrims_jpg_1600_auto_3/389cd48fb9a0d508f0f811bd0355e57f8fe8b033/843c380e402d941e7c4c9f5fa5a2a4e6.jpg" alt="Снегоход Arctic Cat">
-                <h3>Снегоход Arctic Cat ZR 9000</h3>
-                <p class="description">Мощный снегоход для экстремальных условий. Объем двигателя: 998 куб.см, мощность: 200 л.с.</p>
-                <p class="price">600 000 руб.</p>
-                <button class="remove-from-cart">Удалить из корзины</button>
-            </div>
+    <!-- Содержимое корзины -->
+    <div class="cart-container">
+        <h1>Корзина</h1>
+        <div class="cart-items">
+            <!-- Здесь будут отображаться товары из корзины -->
         </div>
-    </section>
+    </div>
 
     <!-- Подвал (Footer) -->
     <footer>
@@ -69,5 +213,8 @@
             <button class="social-btn">FB</button>
         </div>
     </footer>
+
+    <script src="static/js/auth.js"></script>
+    <script src="static/js/cart.js"></script>
 </body>
 </html>
