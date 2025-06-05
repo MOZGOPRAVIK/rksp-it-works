@@ -17,27 +17,32 @@ function getCurrentUser() {
 function logout() {
     const token = localStorage.getItem('token');
     
+    // Очищаем локальное хранилище сразу
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    
     // Отправляем запрос на сервер для выхода
     fetch('http://localhost:5000/api/logout', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
-    .then(data => {
-        // Очищаем локальное хранилище
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Logout failed');
+        }
+        return response.json();
+    })
+    .then(() => {
         // Перенаправляем на страницу входа
-        window.location.href = '/login.html';
+        window.location.href = 'login.html';
     })
     .catch(error => {
         console.error('Logout error:', error);
-        // Даже если произошла ошибка, все равно очищаем хранилище и перенаправляем
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '/login.html';
+        // В случае ошибки все равно перенаправляем на страницу входа
+        window.location.href = 'login.html';
     });
 }
 

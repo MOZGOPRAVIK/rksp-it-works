@@ -5,8 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гидроциклы - Offroad-Shop</title>
     <link rel="stylesheet" href="styles.css"> <!-- Подключаем те же стили, что и на главной странице -->
+    <style>
+        .auth-buttons, .user-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .username {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <!-- Кнопки для неавторизованных пользователей -->
+    <div class="auth-buttons">
+        <a href="login.html">Войти</a> | 
+        <a href="register.html">Регистрация</a>
+    </div>
+
+    <!-- Информация о пользователе и кнопка выхода -->
+    <div class="user-info" style="display: none;">
+        <span class="username"></span>
+        <button class="logout-btn" onclick="logout()">Выйти</button>
+    </div>
+
     <!-- Шапка (Header) -->
     <header>
         <div class="logo">Offroad-Shop</div>
@@ -19,7 +56,6 @@
         <div class="user-panel">
             <button class="icon-btn">🔍</button>
             <button class="icon-btn" onclick="window.location.href='cart.html'">🛒<span class="cart-count">3</span></button>
-            <button class="auth-btn" onclick="window.location.href='login.html'">Вход</button>
         </div>
     </header>
 
@@ -68,5 +104,7 @@
             <button class="social-btn">FB</button>
         </div>
     </footer>
+
+    <script src="static/js/auth.js"></script>
 </body>
 </html>
